@@ -24,7 +24,6 @@
         android:id="@+id/text_price_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_alignBottom="@+id/image_product"
         android:layout_alignStart="@+id/text_name_product"
         android:text="asdasdasdasd" />

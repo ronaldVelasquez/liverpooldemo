@@ -3,6 +3,8 @@ package products.liverpool.com.liverpoolproducts.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.List;
+
 /**
  * Created by ronaldvelasquez on 11/04/17.
  */
@@ -24,7 +26,5 @@ public class CategoryNamePrefrence {
 
         return categoryNamePrefrence;
     }
-
-
 
 }
