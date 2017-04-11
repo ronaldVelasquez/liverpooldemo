@@ -11,7 +11,7 @@ import products.liverpool.com.liverpoolproducts.data.model.entities.Product;
  * Created by ronaldvelasquez on 11/04/17.
  */
 
-public class ProductsPresenterImplement implements ProductsPresenter{
+public class ProductsPresenterImplement implements ProductsPresenter {
     private ProductsView view;
     private ProductsInteractor interactor;
 
@@ -23,10 +23,11 @@ public class ProductsPresenterImplement implements ProductsPresenter{
 
     @Override
     public void searchByCategory(String categoryName) {
+        view.showLoading();
         if (TextUtils.isEmpty(categoryName)) {
+            view.hideLoading();
             view.showError("Debes agregar una categoría");
         } else {
-            view.showLoading();
             interactor.getProductsByCategoryName(new GetProductsLoaded() {
                 @Override
                 public void onProductLoaded(List<Product> products) {

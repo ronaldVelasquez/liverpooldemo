@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
 import products.liverpool.com.liverpoolproducts.R;
+import products.liverpool.com.liverpoolproducts.data.CategoryNamePrefrence;
 import products.liverpool.com.liverpoolproducts.data.model.entities.Product;
 import products.liverpool.com.liverpoolproducts.util.AlertUtil;
 
@@ -20,6 +23,7 @@ public class ProductsActivity extends AppCompatActivity implements ProductsView 
     private RecyclerView recyclerProductsActivity;
     private ProductsPresenter presenter;
     private RVProductsAdapter adapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,9 @@ public class ProductsActivity extends AppCompatActivity implements ProductsView 
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
-                    // todo
+//                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                            android.R.layout.simple_dropdown_item_1line, CategoryNamePrefrence.getLastSearch);
+//                    CategoryNamePrefrence
                 }
             }
         });
@@ -54,6 +60,7 @@ public class ProductsActivity extends AppCompatActivity implements ProductsView 
         autocompleteProductActivity = (AutoCompleteTextView) findViewById(R.id.autocomplete_product_activity);
         buttonSearchProductActivity = (Button) findViewById(R.id.button_search_product_activity);
         recyclerProductsActivity = (RecyclerView) findViewById(R.id.recycler_products_activity);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
     }
 
     private void configButtonSearch() {
@@ -68,12 +75,14 @@ public class ProductsActivity extends AppCompatActivity implements ProductsView 
 
     @Override
     public void showLoading() {
-
+        adapter.clear();
+        progressBar.setIndeterminate(true);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override

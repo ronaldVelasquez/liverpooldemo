@@ -28,7 +28,8 @@ public class RVProductsAdapter extends RecyclerView.Adapter<RVProductsAdapter.VH
     }
 
     public void addProducts(List<Product> products) {
-        this.products = products;
+        this.products.clear();
+        this.products.addAll(products);
         notifyDataSetChanged();
     }
 
@@ -48,7 +49,12 @@ public class RVProductsAdapter extends RecyclerView.Adapter<RVProductsAdapter.VH
 
     @Override
     public int getItemCount() {
-        return 0;
+        return products.size();
+    }
+
+    public void clear() {
+        products.clear();
+        notifyDataSetChanged();
     }
 
     class VHProducts extends RecyclerView.ViewHolder {
